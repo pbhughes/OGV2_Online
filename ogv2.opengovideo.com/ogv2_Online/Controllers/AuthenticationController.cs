@@ -12,6 +12,7 @@ using System.Security;
 using System.Security.Principal;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Net.Http.Formatting;
 
 namespace ogv2_Online.Controllers
 {
@@ -79,6 +80,8 @@ namespace ogv2_Online.Controllers
         [HttpPost]
         public async Task<DateTime> Ping()
         {
+         
+
             return await Task.Run(  () =>
             {
                 return DateTime.Now;
