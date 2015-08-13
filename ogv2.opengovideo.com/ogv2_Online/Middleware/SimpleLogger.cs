@@ -19,7 +19,7 @@ namespace ogv2_Online.Middleware
     {
 
         AppFunc _next = null;
-        IDataRepository _repo = null;
+        IAuthenticationRepository _repo = null;
         string REMOTE_IP = "server.RemoteIpAddress";
         string REQUEST_BODY = "owin.RequestBody";
         string REQUEST_PATH = "owin.RequestPath";
@@ -31,7 +31,7 @@ namespace ogv2_Online.Middleware
         public SimpleLogger(OwinMiddleware next)
             : base(next)
         {
-            _repo = new OGVRepository();
+            _repo = new OGVAuthenticationRepository();
         }
 
 
@@ -40,7 +40,7 @@ namespace ogv2_Online.Middleware
             try
             {
                 Stream oldResponseBody;
-                IDataRepository repo = new OGVRepository();
+                IAuthenticationRepository repo = new OGVAuthenticationRepository();
                 string ip = context.Request.RemoteIpAddress;
 
                 //get the response body and put it back for the downstream items to read

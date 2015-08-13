@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ogv2_Online.Repositories
 {
-    public interface IDataRepository
+    public interface IAuthenticationRepository
     {
         void LogRequest(string remoteIP, string requestBody, string requestPath, string requestMethod, int responseCode, string responseReasonPhrase, string responseBody);
         Task<User> Authenticate(AuthenticationRequest authRequest);

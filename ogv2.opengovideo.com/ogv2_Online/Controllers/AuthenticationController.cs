@@ -13,17 +13,18 @@ using System.Security.Principal;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Net.Http.Formatting;
+using ogv2_Online.Exentions;
 
 namespace ogv2_Online.Controllers
 {
     public class AuthenticationController : ApiController
     {
-        IDataRepository repo;
+        IAuthenticationRepository repo;
         
 
         public AuthenticationController()
         {
-            repo = new OGVRepository();
+            repo = new OGVAuthenticationRepository();
         }
 
         [HttpPost]
@@ -66,7 +67,8 @@ namespace ogv2_Online.Controllers
         {
             try
             {
-                var result = await repo.LogOff(Request.Headers.GetValues("OGVSession").First());
+
+                var result = await repo.LogOff(Request.GetSessionValue());
 
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
@@ -80,7 +82,6 @@ namespace ogv2_Online.Controllers
         [HttpPost]
         public async Task<DateTime> Ping()
         {
-         
 
             return await Task.Run(  () =>
             {

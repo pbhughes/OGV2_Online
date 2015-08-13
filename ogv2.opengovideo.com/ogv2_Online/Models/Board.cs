@@ -18,6 +18,8 @@ namespace ogv2_Online.Models
         [Required]
         public string BoardName { get; set; }
 
+        [Required]
+        public string VideoFolder { get; set; }
 
     }
 }

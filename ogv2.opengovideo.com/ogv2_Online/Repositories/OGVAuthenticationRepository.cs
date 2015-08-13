@@ -10,11 +10,11 @@ using System.Net.Http;
 
 namespace ogv2_Online.Repositories
 {
-    public class OGVRepository : IDataRepository
+    public class OGVAuthenticationRepository : IAuthenticationRepository
     {
         private string conString = string.Empty;
 
-        public OGVRepository()
+        public OGVAuthenticationRepository()
         {
             ConnectionStringSettings mySetting = ConfigurationManager.ConnectionStrings["ogv_data"];
             if (mySetting == null || string.IsNullOrEmpty(mySetting.ConnectionString))

@@ -11,14 +11,14 @@ namespace ogv2_Online.Middleware
     public class AuthenticationCheck : Microsoft.Owin.OwinMiddleware
     {
         private AppFunc _next = null;
-        private IDataRepository _repo = null;
+        private IAuthenticationRepository _repo = null;
         private const string OGV_SESSION = "OGVSession";
         private string REQUEST_PATH = "owin.RequestPath";
 
         public AuthenticationCheck(OwinMiddleware next)
             : base(next)
         {
-            _repo = new OGVRepository();
+            _repo = new OGVAuthenticationRepository();
         }
 
         public async override Task Invoke(IOwinContext context)
